@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/domain/controllers/chat_controller.dart';
+//import 'package:get/get.dart';
+//import 'package:loggy/loggy.dart';
 
 class ChatPage extends StatefulWidget {
   const ChatPage({Key? key, required this.title}) : super(key: key);
@@ -18,6 +21,7 @@ class _ChatPageState extends State<ChatPage> {
     Chat("Jim Jay", "Bien y tu?"),
     Chat("Juan Peréz", "Normal"),
   ];
+  //ChatController chatController = Get.find();
 
   @override
   Widget build(BuildContext context) {

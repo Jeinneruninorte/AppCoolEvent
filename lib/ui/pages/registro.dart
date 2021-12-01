@@ -76,7 +76,7 @@ class LoginFormState extends State<register> {
   Widget _nombres() {
     return TextFormField(
       decoration: const InputDecoration(
-        icon: Icon(Icons.email),
+        icon: Icon(Icons.person),
         hintText: 'Inserte su nombre',
         labelText: 'Nombres',
       ),

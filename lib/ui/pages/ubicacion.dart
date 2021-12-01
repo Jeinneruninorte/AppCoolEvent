@@ -1,18 +1,13 @@
-import 'dart:html';
-
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/main.dart';
-import 'package:flutter_application_1/ui/pages/chats.dart';
-import 'package:flutter_application_1/ui/pages/home.dart';
 
-class Iniciosesion extends StatelessWidget {
-  const Iniciosesion({Key? key}) : super(key: key);
+class Ubicacion extends StatelessWidget {
+  const Ubicacion({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Inicio de sesión"),
+        title: const Text("Ubicación actual"),
         backgroundColor: Colors.lightBlue,
         foregroundColor: Colors.black,
       ),
@@ -21,38 +16,29 @@ class Iniciosesion extends StatelessWidget {
           Center(
             child: Container(
               margin: const EdgeInsets.all(30.0),
-              child: const Text(
-                'COOL EVENT una app más allá de eventos',
-                style: TextStyle(
-                  color: Color.fromRGBO(46, 116, 154, 15),
-                  fontFamily: 'RobotoMono',
-                  fontSize: 25,
-                ),
-              ),
+              child: Image.network(
+                  'https://cdn.pixabay.com/photo/2016/03/22/04/23/map-1272165_960_720.png'),
             ),
           ),
-          MyForm(),
-          /*Center(
-            child: Image.network(
-                'https://colectivosonoro.com/wp-content/uploads/2015/07/Conciertos-960x768.jpg',
-                scale: 0.2),
-          ),*/
-          //),
         ],
       ),
-      //MyForm(),
     );
+    // register(),
+    //],
+    //),
+    //MyForm(),
+    //);
   }
 }
-
-class MyForm extends StatefulWidget {
+/*
+class register extends StatefulWidget {
   @override
   LoginFormState createState() {
     return LoginFormState();
   }
 }
 
-class LoginFormState extends State<MyForm> {
+class LoginFormState extends State<register> {
   final _formKey = GlobalKey<FormState>();
 
   @override
@@ -62,7 +48,8 @@ class LoginFormState extends State<MyForm> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          _usuario(),
+          _nombres(),
+          _correo(),
           _password(),
           Padding(
             padding:
@@ -72,31 +59,28 @@ class LoginFormState extends State<MyForm> {
                 if (_formKey.currentState!.validate()) {
                   ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                       content: Text('Validando la información .  .  .')));
-
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => const Home()));
                 }
               },
               child: const Text('Login'),
             ),
-            //],
           ),
-          /*ElevatedButton(
-              child: const Text('Chatear'),
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const ChatPage(
-                              title: 'NUEVO CHAT',
-                            )));
-              }),*/
         ],
       ),
     );
   }
 
-  Widget _usuario() {
+  Widget _nombres() {
+    return TextFormField(
+      decoration: const InputDecoration(
+        icon: Icon(Icons.email),
+        hintText: 'Inserte su nombre',
+        labelText: 'Nombres',
+      ),
+      validator: (value) => _validaciones(value!),
+    );
+  }
+
+  Widget _correo() {
     return TextFormField(
       decoration: const InputDecoration(
         icon: Icon(Icons.email),
@@ -123,4 +107,4 @@ class LoginFormState extends State<MyForm> {
       return 'Ingrese algún texto';
     }
   }
-}
+}*/
