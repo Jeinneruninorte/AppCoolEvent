@@ -1,5 +1,3 @@
-import 'dart:html';
-
 import 'package:flutter/material.dart';
 import 'ui/pages/login.dart';
 import 'ui/pages/registro.dart';

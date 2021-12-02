@@ -1,9 +1,8 @@
-import 'dart:html';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/main.dart';
 import 'package:flutter_application_1/ui/pages/chats.dart';
 import 'package:flutter_application_1/ui/pages/home.dart';
+import 'package:email_validator/email_validator.dart';
 
 class Iniciosesion extends StatelessWidget {
   const Iniciosesion({Key? key}) : super(key: key);
@@ -68,6 +67,7 @@ class LoginFormState extends State<MyForm> {
             padding:
                 const EdgeInsets.symmetric(vertical: 20.0, horizontal: 30.0),
             child: ElevatedButton(
+              key: const Key('ingresar'),
               onPressed: () {
                 if (_formKey.currentState!.validate()) {
                   ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
@@ -98,29 +98,42 @@ class LoginFormState extends State<MyForm> {
 
   Widget _usuario() {
     return TextFormField(
+      key: const Key('user'),
       decoration: const InputDecoration(
         icon: Icon(Icons.email),
         hintText: 'Inserte su email',
         labelText: 'Email',
       ),
-      validator: (value) => _validaciones(value!),
+      validator: (value) => _validacioncorreo(value!),
     );
   }
 
   Widget _password() {
     return TextFormField(
+      key: const Key('contraseña'),
       decoration: const InputDecoration(
         icon: Icon(Icons.password),
         hintText: 'Inserte su contraseña',
         labelText: 'Contraseña',
       ),
-      validator: (value) => _validaciones(value!),
+      validator: (value) => _validacionescontrasena(value!),
     );
   }
 
-  String? _validaciones(String value) {
+  String? _validacionescontrasena(String value) {
     if (value.isEmpty) {
       return 'Ingrese algún texto';
+    } else if (value.length < 6) {
+      return 'No cumple con la cantidad mínima de caracteres';
+    }
+  }
+
+  dynamic _validacioncorreo(value) {
+    bool _isValid = EmailValidator.validate(value);
+    if (value.isEmpty) {
+      return 'Ingrese algún texto';
+    } else if (_isValid != true) {
+      return 'Correo invalido';
     }
   }
 }

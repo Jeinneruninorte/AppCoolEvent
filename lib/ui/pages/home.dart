@@ -1,9 +1,9 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/main.dart';
 import 'package:flutter_application_1/ui/pages/ubicacion.dart';
 import 'package:flutter_application_1/ui/pages/chats.dart';
-import '';
 
 class Home extends StatelessWidget {
   const Home({Key? key}) : super(key: key);
@@ -51,7 +51,13 @@ class _MyHomeState extends State<MyHome> {
         ),
         actions: <Widget>[
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const MyApp(),
+                  ));
+            },
             icon: const Icon(
               Icons.exit_to_app_outlined,
               size: 35,

@@ -1,3 +1,4 @@
+import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/main.dart';
 
@@ -61,8 +62,8 @@ class LoginFormState extends State<register> {
             child: ElevatedButton(
               onPressed: () {
                 if (_formKey.currentState!.validate()) {
-                  ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                      content: Text('Validando la información .  .  .')));
+                  ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(content: Text('Usuario creado .  .  .')));
                 }
               },
               child: const Text('Login'),
@@ -80,7 +81,7 @@ class LoginFormState extends State<register> {
         hintText: 'Inserte su nombre',
         labelText: 'Nombres',
       ),
-      validator: (value) => _validaciones(value!),
+      validator: (value) => _validacionombres(value!),
     );
   }
 
@@ -91,7 +92,7 @@ class LoginFormState extends State<register> {
         hintText: 'Inserte su email',
         labelText: 'Email',
       ),
-      validator: (value) => _validaciones(value!),
+      validator: (value) => _validacioncorreo(value!),
     );
   }
 
@@ -102,13 +103,39 @@ class LoginFormState extends State<register> {
         hintText: 'Inserte su contraseña',
         labelText: 'Contraseña',
       ),
-      validator: (value) => _validaciones(value!),
+      validator: (value) => _validacionescontrasena(value!),
     );
   }
 
-  String? _validaciones(String value) {
+  String? _validacionombres(String value) {
     if (value.isEmpty) {
       return 'Ingrese algún texto';
+    } else if (value.length < 6) {
+      return 'Recuerde escribir su nombre y apellidos';
+    }
+  }
+
+  String? _validacionescontrasena(String value) {
+    if (value.isEmpty) {
+      return 'Ingrese algún texto';
+    } else if (value.length < 6) {
+      return 'No cumple con la cantidad mínima de caracteres';
+    }
+  }
+
+  dynamic _validacioncorreo(value) {
+    bool _isValid = EmailValidator.validate(value);
+    if (value.isEmpty) {
+      return 'Ingrese algún texto';
+    } else if (_isValid != true) {
+      return 'Correo invalido';
+    } else if (value.contains('torres') ||
+        value.contains('juan') ||
+        value.contains('12') ||
+        value.contains('andrea') ||
+        value.contains('camilo') ||
+        value.contains('hotmail')) {
+      return 'El correo ya se encuentra registrado';
     }
   }
 }
