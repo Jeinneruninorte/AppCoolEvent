@@ -51,11 +51,14 @@ dev_dependencies:
 
 # The following section is specific to Flutter.
 flutter:
+<<<<<<< HEAD
   fonts:
      - family: Nova-Square
        fonts:
          - asset: fonts/NovaSquare-Regular.ttf
          - weight: 700
+=======
+>>>>>>> 1a82e2d54c499f3e39b6bba747c33dcb50f5cac1
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
