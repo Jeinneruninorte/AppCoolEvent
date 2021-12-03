@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/main.dart';
-import 'package:flutter_application_1/ui/pages/chats.dart';
 import 'package:flutter_application_1/ui/pages/home.dart';
 import 'package:email_validator/email_validator.dart';
 
@@ -30,7 +28,7 @@ class Iniciosesion extends StatelessWidget {
               ),
             ),
           ),
-          MyForm(),
+          const MyForm(),
           /*Center(
             child: Image.network(
                 'https://colectivosonoro.com/wp-content/uploads/2015/07/Conciertos-960x768.jpg',
@@ -45,6 +43,8 @@ class Iniciosesion extends StatelessWidget {
 }
 
 class MyForm extends StatefulWidget {
+  const MyForm({Key? key}) : super(key: key);
+
   @override
   LoginFormState createState() {
     return LoginFormState();

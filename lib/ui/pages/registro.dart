@@ -1,6 +1,5 @@
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/main.dart';
 
 class RegistroForm extends StatelessWidget {
   const RegistroForm({Key? key}) : super(key: key);
@@ -28,7 +27,7 @@ class RegistroForm extends StatelessWidget {
               ),
             ),
           ),
-          register(),
+          const register(),
         ],
       ),
       //MyForm(),
@@ -36,7 +35,10 @@ class RegistroForm extends StatelessWidget {
   }
 }
 
+// ignore: camel_case_types
 class register extends StatefulWidget {
+  const register({Key? key}) : super(key: key);
+
   @override
   LoginFormState createState() {
     return LoginFormState();

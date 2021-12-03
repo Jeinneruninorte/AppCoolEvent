@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/main.dart';
 
 class Iniciosesion extends StatelessWidget {
   const Iniciosesion({Key? key}) : super(key: key);
@@ -27,7 +26,7 @@ class Iniciosesion extends StatelessWidget {
               ),
             ),
           ),
-          MyForm(),
+          const MyForm(),
         ],
       ),
       //MyForm(),
@@ -57,6 +56,8 @@ class Iniciosesion extends StatelessWidget {
   }
 }*/
 class MyForm extends StatefulWidget {
+  const MyForm({Key? key}) : super(key: key);
+
   @override
   LoginFormState createState() {
     return LoginFormState();

@@ -1,9 +1,8 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/main.dart';
 import 'package:flutter_application_1/ui/pages/ubicacion.dart';
 import 'package:flutter_application_1/ui/pages/chats.dart';
+
+import '../app.dart';
 
 class Home extends StatelessWidget {
   const Home({Key? key}) : super(key: key);
@@ -55,7 +54,7 @@ class _MyHomeState extends State<MyHome> {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const MyApp(),
+                    builder: (context) => const App(),
                   ));
             },
             icon: const Icon(
