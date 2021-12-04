@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/ui/pages/home.dart';
+import 'package:flutter_application_1/domain/controllers/user_profile_controller.dart';
+import 'package:flutter_application_1/ui/pages/user_profile/user_profile.dart';
 import 'package:email_validator/email_validator.dart';
+import 'package:get/get.dart';
 
 class Iniciosesion extends StatelessWidget {
   const Iniciosesion({Key? key}) : super(key: key);
@@ -52,16 +54,18 @@ class MyForm extends StatefulWidget {
 }
 
 class LoginFormState extends State<MyForm> {
+  UserProfileController userProfileController = Get.find();
   final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
+    final emailController = TextEditingController();
     return Form(
       key: _formKey,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          _usuario(),
+          _email(emailController),
           _password(),
           Padding(
             padding:
@@ -70,11 +74,15 @@ class LoginFormState extends State<MyForm> {
               key: const Key('ingresar'),
               onPressed: () {
                 if (_formKey.currentState!.validate()) {
+                  userProfileController.setName("Daniel Sebastian Rincon");
+                  userProfileController.setEmail(emailController.text);
                   ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
                       content: Text('Validando la información .  .  .')));
 
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => const Home()));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const UserProfile()));
                 }
               },
               child: const Text('Login'),
@@ -96,14 +104,15 @@ class LoginFormState extends State<MyForm> {
     );
   }
 
-  Widget _usuario() {
+  Widget _email(var emailController) {
     return TextFormField(
       key: const Key('user'),
       decoration: const InputDecoration(
         icon: Icon(Icons.email),
-        hintText: 'Inserte su email',
+        hintText: 'Ingrese su email',
         labelText: 'Email',
       ),
+      controller: emailController,
       validator: (value) => _validacioncorreo(value!),
     );
   }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'pages/login.dart';
-import 'pages/registro.dart';
+import 'pages/register.dart';
 
 class App extends StatelessWidget {
   const App({Key? key}) : super(key: key);
